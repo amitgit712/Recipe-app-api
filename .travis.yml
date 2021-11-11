@@ -5,7 +5,7 @@ python:
 services:
   - docker
 
-before_scraipt: pip install docker-compose
+before_script: pip install docker-compose
 
-scraipt:
-  - docker-compose run app sh -c "python manage.py test && flake8"
+script:
+  - docker-compose run app sh -c "python manage.py wait_for_db && python manage.py test && flake8"
